@@ -5,18 +5,30 @@
 // 4 -> 10
 // 8 -> 36
 
+using System.Globalization;
+
 int SumNumber(int number)
 {
     int count = 0;
-    for (int i=0; i <= number; i++)
+    for (int i = 1; i <= number; i++)
+    checked
     {
         count += i;
     }
+    
     return count;
 }
 
 Console.Write("Введите целое положительное число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine($"{num} -> {SumNumber(num)}");
+if (num < 1)
+{
+    Console.WriteLine("Некорректный ввод!");
+    return;
+} 
+
+int sumNumbers = SumNumber(num);
+
+Console.WriteLine($"{num} -> {sumNumbers}");
 
